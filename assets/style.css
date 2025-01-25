@@ -1,0 +1,36 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background-color: #111111;
+}
+
+section {
+    height: 500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    padding: 4rem;
+}
+
+h1 {
+    color: #fff;
+    font-weight: 900;
+    text-transform: uppercase;
+}
+
+.custom-dropdown {
+    width: 100%;
+    margin: 10px auto;
+    font-size: 16px; 
+}
+
+.custom-checklist{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    color: #fff;
+}
