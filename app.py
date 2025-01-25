@@ -124,13 +124,13 @@ def update_graphs(selected_make, selected_model, selected_years,):
     # Gráfico de barras para total de veículos por marca
     car_make_counts = filtered_df['Car Make'].value_counts().reset_index()
     car_make_counts.columns = ['Car Make', 'Total Vehicles']
-    fig_car_makes = px.bar(car_make_counts, x='Car Make', y='Total Vehicles', color='Car Make', title='Total de Veículos por Marca', template='lux')
+    fig_car_makes = px.bar(car_make_counts, x='Car Make', y='Total Vehicles', color='Car Make', title='Total de Veículos por Marca', template='lux', labels={'Car Make': 'Marca', 'Total Vehicles': 'Total de Veículos'})
     fig_car_makes.update_layout(xaxis_title='Marca', yaxis_title='Total de Veículos', showlegend=False)
 
     # Gráfico de barras para total de veículos por modelo
     car_model_counts = filtered_df['Car Model'].value_counts().reset_index()
     car_model_counts.columns = ['Car Model', 'Total Vehicles']
-    fig_car_models = px.bar(car_model_counts, x='Car Model', y='Total Vehicles', color='Car Model', title='Total de Veículos por Modelo', template='lux')
+    fig_car_models = px.bar(car_model_counts, x='Car Model', y='Total Vehicles', color='Car Model', title='Total de Veículos por Modelo', template='lux', labels={'Car Model': 'Modelo', 'Total Vehicles': 'Total de Veículos'})
     fig_car_models.update_layout(xaxis_title='Modelo', yaxis_title='Total de Veículos', showlegend=False)
 
     # Gráfico de Potência (Horsepower) x Modelos
@@ -145,12 +145,11 @@ def update_graphs(selected_make, selected_model, selected_years,):
     fig_price_time.update_traces(textposition='top center', textfont=dict(size=10))
 
     # Gráfico de Preço x Ano
-    fig_price_year = px.scatter(sorted_df_by_price_time, x='Year', y='Price (in USD)', color='Price (in USD)', title=f'Evolução do Preço Médio por Ano ({selected_make or "Todos"})', labels={'Price (in USD)': 'Preço (USD)', 'Year' : 'Ano', 'Car Model': 'Modelo do Carro', 'text': 'Modelo e Ano'}, text='text')
-    fig_price_year.update_layout(xaxis_title='Ano', yaxis_title='Preço (USD)', template='lux')
+    fig_price_year = px.scatter(sorted_df_by_price_time,  x='Price (in USD)', y='Year', color='Price (in USD)', title=f'Evolução do Preço Médio por Ano ({selected_make or "Todos"})', labels={'Price (in USD)': 'Preço (USD)', 'Year' : 'Ano', 'Car Model': 'Modelo do Carro', 'text': 'Modelo e Ano'}, text='text')
+    fig_price_year.update_layout(xaxis_title='Preço (USD)', yaxis_title='Ano', template='lux')
     fig_price_year.update_traces(textposition='top center', textfont=dict(size=10))
 
     return fig_car_makes, fig_car_models, fig_horsepower, fig_price_time, fig_price_year
-
 
 # ====== EXECUTAR O SERVIDOR ====== #
 if __name__ == '__main__':
